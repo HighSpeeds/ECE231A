@@ -61,9 +61,34 @@ $$H(X)-H(X|Y)=\boxed{-\sum_{x\in S}p(x)\log\left(
 $H(X)-H(X|Y)$ is maximized when 
 $\sum_{x\in S}p(x)=\sum_{x\notin S}p(x)=\frac{1}{2}$, this is possible
 when $S=\boxed{2,5}$ or $S=\boxed{1,2,4}$
+\section*{Problem 5}
+\subsection*{(a)}
+We have that 
+$$H(X)=-\sum_{i\in \chi_1}(1-\gamma)p(i)\log\left((1-\gamma)p(i)\right)-
+\sum_{i\in \chi_2}\gamma q(i)\log\left(\gamma q(i)\right)$$
+Likewise for $H(X,Y)$ we have
+$$H(X,Y)=-\sum_{y \in \{1,2\}}\sum_{x\in\{1,2,..m\}}P(x,y)\log(P(x,y))$$
+we have that
+$$p(x,1)=\begin{cases}
+	(1-\gamma)p(x) & \text{if } x\in \chi_1\\
+	0 & \text{if } x\notin \chi_2
+\end{cases}$$
+$$p(x,2)=\begin{cases}
+	0 & \text{if } x\in \chi_1\\
+	\gamma q(x) & \text{if } x\notin \chi_2
+\end{cases}$$
+Therefore we have
+$$H(X,Y)=-\sum_{i\in \chi_1}(1-\gamma)p(i)\log\left((1-\gamma)p(i)\right)-
+\sum_{i\in \chi_2}\gamma q(i)\log\left(\gamma q(i)\right)$$
+And thus we have 
+$$\boxed{H(X,Y)=H(X)}$$
+\subsection*{(b)}
+
+
+
 \section*{Problem 6}
 \subsection*{(a)}
-\begin{align*}
+\begin{align*}1,2
 	H(x)&=-\sum_{x\in X} p(x)\log(p(x))\\
 	&=p(A)\log(p(A))+p(B)\log(p(B))+p(C)\log(p(C))\\&+p(D)\log(p(D))+p(E)\log(p(E))+p(F)\log(p(F))\\
 	&=\frac{1}{2}\log(4)+\frac{1}{4}\log(8)+\frac{3}{16}\log(\frac{16}{3})+\frac{1}{16}\log(16)\\
