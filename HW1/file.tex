@@ -19,6 +19,12 @@
 \title{ECE 231A HW 1}
 \begin{document}
 \maketitle
+\section*{Problem 2}
+Since a uniquely decodable code is a instantanous code we can use 
+the Kraft Inequality. We have
+$$\sum_{i=1}^{6}D^{-l_i}\leq1$$
+The smallest D that satisfies this is $D=3$, therefore a good
+lower bound on $D$ would be $\boxed{3}$.
 \section*{Problem 3}
 \subsection*{(a)}
 The entropy of $H(X)$ is
@@ -61,6 +67,22 @@ $$H(X)-H(X|Y)=\boxed{-\sum_{x\in S}p(x)\log_2\left(
 $H(X)-H(X|Y)$ is maximized when 
 $\sum_{x\in S}p(x)=\sum_{x\notin S}p(x)=\frac{1}{2}$, this is possible
 when $S=\boxed{2,5}$ or $S=\boxed{1,2,4}$
+\section*{Problem 4}
+\subsection*{(a)}
+If a codeword is $l_j$ long, but if it has to start with $C(i)$, then it would be effectively be
+concatenating $C(i)$ with a code word from $A_{j-i}$, ie all the code words with length $l_j-l_i$. Therefore the total number of words 
+of $A_j$ would be the total combinations of $A_{j-i}$, ie $2^{l_j-l_i}$\\\\
+Likewise, if a codeword is $l_j$ long, but if it has to end with $C(i)$, then it would be effectively be
+concatenating a code word from $A_{j-i}$ with $C(i)$, ie all the code words with length $l_j-l_i$. Therefore the total number of words 
+of $A_j$ would be the total combinations of $A_{j-i}$, ie $2^{l_j-l_i}$
+\subsection*{(b)}
+If we assume that $l_j>l_i$ we would have that the total number of words to remove from $A_j$ would
+be the toal number of words to remove that start with $C(i)$ plus the total number of words that end with
+$C(i)$. Therefore we would have that the total number of words to remove would be $2^{l_j-l_i+1}$. 
+And if $l_j=l_i$ then we would only remove $1$ word, $C(i)$.
+\subsection*{(c)}
+If we have that $\sum_{i=1}^{k}2^{-l_i}\leq\frac{1}{2}$, then we must have that $\l_i\geq1$, therefore,
+$A_i$ will never be empty, and thus the algorithm will never fail
 \section*{Problem 5}
 \subsection*{(a)}
 We have that 
