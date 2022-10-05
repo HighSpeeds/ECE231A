@@ -90,15 +90,37 @@ assure the above inequality will be satisfied by the following inequality:
 $$2^{l_j}\geq\sum_{i=1}^j2^{l_j-l_i+1}$$
 This can be generalized to 
 $$2^{l_k}\geq\sum_{i=1}^k2^{l_k-l_i+1}$$
-Since
+Since for $1\leq j \leq k$:
 \begin{align*}
 	2^{l_k}&\geq\sum_{i=1}^k2^{l_k-l_i+1}\\
 	2^{l_k}2^{l_j-l_k}&\geq2^{l_j-l_k}\sum_{i=1}^k2^{l_k-l_i+1}\\
 	2^{l_j}&\geq\sum_{i=1}^k2^{l_j-l_i+1}\geq \sum_{i=1}^j2^{l_j-l_i+1}
 \end{align*}
-For any $1\leq j\leq k$, we could rearange the inequality to 
+Therefore we could rearange the inequality to 
 $$1\geq\sum_{i=1}^j2^{-l_i+1}$$
 $$\sum_{i=1}^j2^{-l_i+1}\leq\frac{1}{2}$$
+\subsection*{(d)}
+Let $E[length(C(U))]=L$, we want to minimize
+$$L=\sum_{i=1}^k p_il_i$$
+given
+$$\sum_{i=1}^k 2^{-l_i}\leq\frac{1}{2}$$
+Using a langrange multipler, we get
+$$J=\sum_{i=1}^{k}p_il_i+\lambda\sum_{i=1}^k 2^{-l_i}$$
+$$\frac{\partial J}{\partial l_i}=p_i-\lambda 2^{-l_i}\ln(2)$$
+Therefore we get that
+$$2^{-l_i}=\frac{p_i}{\lambda \ln(2)}$$
+Plugging this into $\sum_{i=1}^{k}2^{-l_i}\leq\frac{1}{2}$, we get
+$$\lambda=\frac{2}{\ln(2)}$$
+Therefore we get that
+$$2^{-l_i}=\frac{p_i}{2}$$
+And thus the optimal code length is
+$$l_i^*=-\log_2{p_i}+\log_2(2)$$
+But since $l_i$ must be an integer we have
+$$-\log_2(p_i)\leq l_i^*\leq-\log_2(p_i)+2$$
+Therefore we have that
+$$-\sum_{i=1}^k p_i\log_2(p_i)\leq \sum_{i=1}^k p_i l_i \leq \left(-\sum_{i=1}^k p_i\log_2(p_i)\right)+2$$
+Or in other words:
+$$H(U)\leq E[length(C(U))] \leq H(U)+2$$
 \section*{Problem 5}
 \subsection*{(a)}
 We have that 
