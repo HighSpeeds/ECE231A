@@ -81,8 +81,24 @@ be the toal number of words to remove that start with $C(i)$ plus the total numb
 $C(i)$. Therefore we would have that the total number of words to remove would be $2^{l_j-l_i+1}$. 
 And if $l_j=l_i$ then we would only remove $1$ word, $C(i)$.
 \subsection*{(c)}
-If we have that $\sum_{i=1}^{k}2^{-l_i}\leq\frac{1}{2}$, then we must have that $\l_i\geq1$, therefore,
-$A_i$ will never be empty, and thus the algorithm will never fail
+We have that for any $1\leq j\leq k$, in order for the algorithm to not fail, we must
+have that the number of inital codewords, is greater than the number
+of removed code words, in otherwords we must have that
+$$2^{l_j}>\sum_{i=1}^{j-1}2^{l_j-l_i+1}$$
+Since, $\sum_{i=1}^{j-1}2^{l_j-l_i+1}<\sum_{i=1}^{j}2^{l_j-l_i+1}$, we can
+assure the above inequality will be satisfied by the following inequality:
+$$2^{l_j}\geq\sum_{i=1}^j2^{l_j-l_i+1}$$
+This can be generalized to 
+$$2^{l_k}\geq\sum_{i=1}^k2^{l_k-l_i+1}$$
+Since
+\begin{align*}
+	2^{l_k}&\geq\sum_{i=1}^k2^{l_k-l_i+1}\\
+	2^{l_k}2^{l_j-l_k}&\geq2^{l_j-l_k}\sum_{i=1}^k2^{l_k-l_i+1}\\
+	2^{l_j}&\geq\sum_{i=1}^k2^{l_j-l_i+1}\geq \sum_{i=1}^j2^{l_j-l_i+1}
+\end{align*}
+For any $1\leq j\leq k$, we could rearange the inequality to 
+$$1\geq\sum_{i=1}^j2^{-l_i+1}$$
+$$\sum_{i=1}^j2^{-l_i+1}\leq\frac{1}{2}$$
 \section*{Problem 5}
 \subsection*{(a)}
 We have that 
