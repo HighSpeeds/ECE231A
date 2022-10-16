@@ -3,6 +3,41 @@
 \begin{document}
 \maketitle
 \section*{Problem 1}
+\subsection*{(a)}
+No this is not necessqarily true.  Consider the following example:
+
+\subsection*{(b)}
+We have that
+\begin{align*}
+    I(X_1;X_2;X_3)=&I(X_1;X_2)-I(X_1;X_2|X_3)\\
+    =&H(X_1)+H(X_2)-H(X_1,X_2)-\left(
+        H(X_1|X_3)-H(X_1|X_2,X_3)
+    \right)\\
+    =&H(X_1)+H(X_2)+H(X_3)-H(X_1,X_2)-H(X_1,X_3)\\&-H(X_2,X_3)+H(X_1,X_2,X_3)\\
+\end{align*}
+Since that
+\begin{align*}
+    I(X_1;X_2|X_3)&=H(X_1|X_3)-H(X_1|X_2,X_3)\\
+    &=H(X_1,X_3)-H(X_3)-H(X_1,X_2,X_3)+H(X_2,X_3)
+\end{align*}
+\begin{align*}
+    I(X_2;X_3|X_1)&=H(X_2|X_1)-H(X_2|X_3,X_1)\\
+    &=H(X_2,X_1)-H(X_1)-H(X_1,X_2,X_3)+H(X_3,X_1)
+\end{align*}
+\begin{align*}
+    I(X_1;X_3|X_2)&=H(X_1|X_2)-H(X_1|X_3,X_2)\\
+    &=H(X_2,X_1)-H(X_2)-H(X_1,X_2,X_3)+H(X_3,X_2)
+\end{align*}
+Therefore we have that
+$$I(X_1;X_2;X_3)=I(X_1;X_2)-I(X_1;X_2|X_3)$$
+$$I(X_1;X_2;X_3)=I(X_2;X_3)-I(X_2;X_3|X_1)$$
+$$I(X_1;X_2;X_3)=I(X_1;X_3)-I(X_1;X_3|X_2)$$
+Since $I(X_1;X_2)\geq0$, $I(X_2;X_3)\geq0$, and $I(X_1;X_3)\geq0$, we have that
+$$I(X_1;X_2;X_3)\geq-I(X_1;X_2|X_3)$$
+$$I(X_1;X_2;X_3)\geq-I(X_2;X_3|X_1)$$
+$$I(X_1;X_2;X_3)\geq-I(X_1;X_3|X_2)$$
+Therefore we have that
+$$I(X_1;X_2;X_3)\geq-\min(I(X_1;X_2|X_3),I(X_2;X_3|X_1),I(X_1;X_3|X_2))$$
 \section*{Problem 2}
 \section*{Problem 3}
 \subsection*{(a)}
