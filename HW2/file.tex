@@ -1,0 +1,48 @@
+\include{"../preamble.tex"}
+\title{ECE 231A HW 2}
+\begin{document}
+\maketitle
+\section*{Problem 1}
+\section*{Problem 2}
+\section*{Problem 3}
+\subsection*{(a)}
+Let the increase in Alice's score after the ith round be 
+represented by the random variable $Z_A^i$ we have that
+\begin{align*}
+    Z_A^i&=\begin{cases}
+        4 & \text{w.p. } 1/15\\
+        7 & \text{w.p. } 5/15\\
+        0 & \text{w.p. } 9/15
+    \end{cases}
+\end{align*}
+And the increase in Bob's score after the ith round be
+represented by the random variable $Z_B^i$ we have that
+\begin{align*}
+    Z_B^i&=\begin{cases}
+        3 & \text{w.p. } 1/15\\
+        5 & \text{w.p. } 2/15\\
+        6 & \text{w.p. } 6/15\\
+        0 & \text{w.p. } 6/15
+    \end{cases}
+\end{align*}
+Then we have that 
+$$S_A^n=\sum_{i=1}^n Z_A^i$$
+and
+$$S_B^n=\sum_{i=1}^n Z_B^i$$
+As $n\to\infty$ we have that
+$$\lim_{n\to\infty}S_A^n=\lim_{n\to\infty}\sum_{i=1}^n Z_A^i=E[Z_A^i]=\boxed{2.6}$$
+and
+$$\lim_{n\to\infty}S_B^n=\lim_{n\to\infty}\sum_{i=1}^n Z_B^i=E[Z_B^i]=\boxed{3.225}$$
+\subsection*{(b)}
+We will need to make $\alpha>7$ since we need to increase the expected value,
+therefore the probabilites for $Z_A$ would not change, however instead 
+of being 7 with the probability of $5/15$ we would have $\alpha$ with the
+probability of $5/15$. Likewise $Z_B$ would not change. Therefore we would have that
+our new 
+$$E[Z_A^i]=\frac{4}{15}+\frac{5}{15}\alpha$$
+To make this greater than $3.225$ we would have that
+$\alpha>8.875$, so the least value of alpha to make Alice's
+score greater than Bob's after n rounds is $\boxed{\alpha=9}$ if $\alpha$ has
+to be an integer. 
+
+\end{document}
