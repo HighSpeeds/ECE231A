@@ -39,6 +39,16 @@ $$I(X_1;X_2;X_3)\geq-I(X_1;X_3|X_2)$$
 Therefore we have that
 $$I(X_1;X_2;X_3)\geq-\min(I(X_1;X_2|X_3),I(X_2;X_3|X_1),I(X_1;X_3|X_2))$$
 \section*{Problem 2}
+Once again from 
+$$I(X_1;X_2;X_3)=I(X_1;X_2)-I(X_1;X_2|X_3)$$
+$$I(X_1;X_2;X_3)=I(X_2;X_3)-I(X_2;X_3|X_1)$$
+$$I(X_1;X_2;X_3)=I(X_1;X_3)-I(X_1;X_3|X_2)$$
+Since $I(X_1;X_2|X_3)\geq0$, $I(X_2;X_3|X_1)\geq0$, and $I(X_1;X_3|X_2)\geq0$, we have that
+$$I(X_1;X_2;X_3)\leq I(X_1;X_2)$$
+$$I(X_1;X_2;X_3)\leq I(X_2;X_3)$$
+$$I(X_1;X_2;X_3)\leq I(X_1;X_3)$$
+Therefore we have that
+$$I(X_1;X_2;X_3)\leq\min(I(X_1;X_2),I(X_2;X_3),I(X_1;X_3))$$
 \section*{Problem 3}
 \subsection*{(a)}
 Let the increase in Alice's score after the ith round be 
