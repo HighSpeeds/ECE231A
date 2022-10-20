@@ -96,13 +96,30 @@ $$E[Z_A^i]=\frac{4}{15}+\frac{5}{15}\alpha$$
 To make this greater than $3.2666$ we would have that
 $\boxed{\alpha>9}$, 
 \section*{Problem 4}
-\section*{Probelem 5}
+\section*{Problem 5}
 \subsection*{(a)}
-In order for $\psi=[\psi_1,\psi_2]^T$ to be a stationary distribution for 
-a Markov chain we must have $\psi\Pi=\psi$, therefore we have the 
+In order for $\mu=[\mu_1,\mu_2]^T$ to be a stationary distribution for 
+a Markov chain we must have $\mu^T\Pi=\mu^T$, therefore we have the 
 following two series of equations
-$$\frac{1}{4}\psi_1+\frac{3}{4}\psi_2=\psi_1$$
-$$\psi_1+\psi_2=1$$
-Solving these we get $\psi_1=\psi_2=\frac{1}{2}$. Therefore the 
-entropy of this $H(X)=\log_2(2)=\boxed{1\text{ shannons}}$
+$$\frac{1}{4}\mu_1+\frac{2}{3}\mu_2=\mu_1$$
+$$\frac{3}{4}\mu_1+\frac{1}{3}\mu_2=\mu_2$$
+Solving these we get, and applying the condition that $\mu_1+\mu_2=1$,
+we get $\mu_1=\frac{\frac{2}{3}}{\frac{3}{4}+\frac{2}{3}}=\boxed{0.470}$ and
+$\mu_2=\frac{\frac{3}{4}}{\frac{3}{4}+\frac{2}{3}}=\boxed{0.529}$ Therefore the 
+entropy of this $H(X)=-0.470\log_2(0.470)-0.529\log_2(0.529)=\boxed{-0.9975\text{ shannons}}$
+\subsection*{(b)}
+We have that 
+\begin{align*}
+    \mathcal{H}(x)&=-\sum_{i}\mu_i\sum_{j}P_{ij}\log_2(P_{ij})\\
+    &=-0.470\left(\frac{1}{4}\log_2\left(\frac{1}{4}\right)+
+    \frac{3}{4}\log_2\left(\frac{3}{4}\right)\right)-0.529\left(\frac{2}{3}\log_2\left(\frac{2}{3}\right)+
+    \frac{1}{3}\log_2\left(\frac{1}{3}\right)\right)\\
+    &=\boxed{0.8679345589507923}
+\end{align*}
+This is less than $H(X)$ since 
+$\mathcal{H}(x)=\lim_{n\to\infty}H(X_n|X_{n-1},\dots,X_1)$, 
+since conditioning reduces entropy, thus we have that 
+$H(X_n|X_{n-1},\dots,X_1)<H(X)$.
+\subsection*{(c)}
+
 \end{document}
