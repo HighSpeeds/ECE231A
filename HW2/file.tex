@@ -38,7 +38,7 @@ $$I(X_1;X_2;X_3)\geq-I(X_2;X_3|X_1)$$
 $$I(X_1;X_2;X_3)\geq-I(X_1;X_3|X_2)$$
 Therefore we have that
 $$I(X_1;X_2;X_3)\geq-\min(I(X_1;X_2|X_3),I(X_2;X_3|X_1),I(X_1;X_3|X_2))$$
-\section*{Problem 2}
+\subsection*{(c)}
 Once again from 
 $$I(X_1;X_2;X_3)=I(X_1;X_2)-I(X_1;X_2|X_3)$$
 $$I(X_1;X_2;X_3)=I(X_2;X_3)-I(X_2;X_3|X_1)$$
@@ -85,7 +85,7 @@ $$S_B^n=\sum_{i=1}^n Z_B^i$$
 As $n\to\infty$ we have that
 $$\lim_{n\to\infty}S_A^n=\lim_{n\to\infty}\sum_{i=1}^n Z_A^i=E[Z_A^i]=\boxed{2.6}$$
 and
-$$\lim_{n\to\infty}S_B^n=\lim_{n\to\infty}\sum_{i=1}^n Z_B^i=E[Z_B^i]=\boxed{3.225}$$
+$$\lim_{n\to\infty}S_B^n=\lim_{n\to\infty}\sum_{i=1}^n Z_B^i=E[Z_B^i]=\boxed{3.2666}$$
 \subsection*{(b)}
 We will need to make $\alpha>7$ since we need to increase the expected value,
 therefore the probabilites for $Z_A$ would not change, however instead 
@@ -93,9 +93,16 @@ of being 7 with the probability of $5/15$ we would have $\alpha$ with the
 probability of $5/15$. Likewise $Z_B$ would not change. Therefore we would have that
 our new 
 $$E[Z_A^i]=\frac{4}{15}+\frac{5}{15}\alpha$$
-To make this greater than $3.225$ we would have that
-$\alpha>8.875$, so the least value of alpha to make Alice's
-score greater than Bob's after n rounds is $\boxed{\alpha=9}$ if $\alpha$ has
-to be an integer. 
-
+To make this greater than $3.2666$ we would have that
+$\boxed{\alpha>9}$, 
+\section*{Problem 4}
+\section*{Probelem 5}
+\subsection*{(a)}
+In order for $\psi=[\psi_1,\psi_2]^T$ to be a stationary distribution for 
+a Markov chain we must have $\psi\Pi=\psi$, therefore we have the 
+following two series of equations
+$$\frac{1}{4}\psi_1+\frac{3}{4}\psi_2=\psi_1$$
+$$\psi_1+\psi_2=1$$
+Solving these we get $\psi_1=\psi_2=\frac{1}{2}$. Therefore the 
+entropy of this $H(X)=\log_2(2)=\boxed{1\text{ shannons}}$
 \end{document}
