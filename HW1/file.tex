@@ -19,6 +19,10 @@
 \title{ECE 231A HW 1}
 \begin{document}
 \maketitle
+\section*{Problem 1}
+If there was no slackness in the Kraft Inequality, then we would have 
+$$\sum_{i=1}^m D^{l_m-l_i}<D^{l_m}$$
+For the max length $l_m$. This means that for some nodes on level $l_m$ that is not a descendent of a codeword, or a codeword. Therefore while this node would be uniquely decodable but not able to form a sentence.
 \section*{Problem 2}
 Since a uniquely decodable code is a instantanous code we can use 
 the Kraft Inequality. We have
@@ -58,15 +62,19 @@ Therefore we have
 	\right)
 \end{align*}
 Therefore we have
-$$H(X)-H(X|Y)=\boxed{-\sum_{x\in S}p(x)\log_2\left(
+$$H(X)-H(X|Y)=-\sum_{x\in S}p(x)\log_2\left(
 	\sum_{x\in S}p(x)
 \right)-\sum_{x\notin S}p(x)\log_2\left(
 	\sum_{x\notin S}p(x)
-\right)}$$
+\right)$$$$H(X)-H(X|Y)=\boxed{-q\log_2(q)-(1-q)\log_2(1-q)}$$
 \subsection*{(b)}
 $H(X)-H(X|Y)$ is maximized when 
 $\sum_{x\in S}p(x)=\sum_{x\notin S}p(x)=\frac{1}{2}$, this is possible
 when $S=\boxed{2,5}$ or $S=\boxed{1,2,4}$
+\subsection*{(d)}
+I would use Huffman Coding, and ask the questions in the following format,\\
+\includegraphics[scale=0.25]{fig0.jpg}\\
+the average question length would be $\boxed{2.25}$
 \section*{Problem 4}
 \subsection*{(a)}
 If a codeword is $l_j$ long, but if it has to start with $C(i)$, then it would be effectively be
@@ -116,7 +124,7 @@ $$2^{-l_i}=\frac{p_i}{2}$$
 And thus the optimal code length is
 $$l_i^*=-\log_2{p_i}+\log_2(2)$$
 But since $l_i$ must be an integer we have
-$$-\log_2(p_i)\leq l_i^*\leq-\log_2(p_i)+2$$
+$$-\log_2(p_i)\leq l_i\leq-\log_2(p_i)+2$$
 Therefore we have that
 $$-\sum_{i=1}^k p_i\log_2(p_i)\leq \sum_{i=1}^k p_i l_i \leq \left(-\sum_{i=1}^k p_i\log_2(p_i)\right)+2$$
 Or in other words:
@@ -173,6 +181,11 @@ This is maximized when
 	H(x)&=-\sum_{x\in X} p(x)\log_2(p(x))\\
 	&=p(A)\log_2(p(A))+p(B)\log_2(p(B))+p(C)\log_2(p(C))\\&+p(D)\log_2(p(D))+p(E)\log_2(p(E))+p(F)\log_2(p(F))\\
 	&=\frac{1}{2}\log_2(4)+\frac{1}{4}\log_2(8)+\frac{3}{16}\log_2(\frac{16}{3})+\frac{1}{16}\log_2(16)\\
-	&=\boxed{2.2452\text{ shannons}}
+	&=\boxed{2.452\text{ shannons}}
 \end{align*}
+\subsection*{(b)}
+We have the following binary Huffman Encoding,\\
+\includegraphics[scale=0.25]{fig1.jpg}\\
+
+the expected length is $\boxed{2.5}$.
 \end{document}
