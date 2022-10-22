@@ -96,6 +96,15 @@ $$E[Z_A^i]=\frac{4}{15}+\frac{5}{15}\alpha$$
 To make this greater than $3.2666$ we would have that
 $\boxed{\alpha>9}$, 
 \section*{Problem 4}
+\subsection*{(a)}
+We have that $H(\hat{p}(Y_m)|Y_m)=0$ and $H(\hat{p}(Y_m)|Y_m,p)=0$, therefore
+we have that $I(\hat{p}(Y_m);p|Y_m)=0$ 
+\begin{align*}
+    I(\hat{p}(Y_m);p|Y_m)+I(\hat{p}(Y_m);p)&=I(\hat{p}(Y_m);p,Y_m)
+            =I(p;Y_m|\hat{p}(Y_m))+I(p;Y_m)\\
+            I(\hat{p}(Y_m);p)&=I(p;Y_m|\hat{p}(Y_m))+I(p;Y_m)\\
+            I(\hat{p}(Y_m);p)&\leq I(p;Y_m)
+\end{align*}
 \section*{Problem 5}
 \subsection*{(a)}
 In order for $\mu=[\mu_1,\mu_2]^T$ to be a stationary distribution for 
@@ -106,7 +115,7 @@ $$\frac{3}{4}\mu_1+\frac{1}{3}\mu_2=\mu_2$$
 Solving these we get, and applying the condition that $\mu_1+\mu_2=1$,
 we get $\mu_1=\frac{\frac{2}{3}}{\frac{3}{4}+\frac{2}{3}}=\boxed{0.470}$ and
 $\mu_2=\frac{\frac{3}{4}}{\frac{3}{4}+\frac{2}{3}}=\boxed{0.529}$ Therefore the 
-entropy of this $H(X)=-0.470\log_2(0.470)-0.529\log_2(0.529)=\boxed{-0.9975\text{ shannons}}$
+entropy of this $H(X)=-0.470\log_2(0.470)-0.529\log_2(0.529)=\boxed{0.9975\text{ shannons}}$
 \subsection*{(b)}
 We have that 
 \begin{align*}
