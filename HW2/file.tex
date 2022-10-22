@@ -122,10 +122,23 @@ since conditioning reduces entropy, thus we have that
 $H(X_n|X_{n-1},\dots,X_1)<H(X)$.
 \subsection*{(c)}
 Since we can determine $X_n$ given $Y_n,...,Y_1$ and since 
-$Y_n$ is a determinist function we have
+$Y_n$ is a deterministic function we have
 $$H(Y_n|Y_{n-1},\dots,Y_1)=H(X_{n}|X_{n-1},...,X_1)$$
 And therefore we have that 
 $\mathcal{H}(Y)=\mathcal{H}(X)=\boxed{0.8679345589507923}$
 \subsection*{(d)}
+We have that 
+$$H(Y_n,X_n,X_{n-1})=H(Y_n|X_n,X_{n-1})+H(X_n,X_{n-1})=H(Y_n)+H(X_n,X_{n-1}|Y_n)$$
+Therefore we get 
+$$H(X_n,X_{n-1})=H(Y_n)+H(X_n,X_{n-1}|Y_n)$$
+Since XOR if given one of the values, we can imediately determine the other
+value we have 
+\begin{align*}
+    H(X_n,X_{n-1})&=H(Y_n)+H(X_{n-1})\\
+    H(X_n|X_{n-1})&=H(Y_n)
+    H(Y_n)=\boxed{0.8679345589507923}
+\end{align*}
+
+
 
 \end{document}
