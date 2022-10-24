@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1666626261 "/home/lawrence/Desktop/UCLA/ECE231A/HW3/file.tex" "file.pdf" "file" 1666626261
+["pdflatex"] 1666636298 "/home/lawrence/Desktop/UCLA/ECE231A/HW3/file.tex" "file.pdf" "file" 1666636298
   "../preamble.tex" 1664289219 440 34840f412b4acb25e102633b63b5eaf2 ""
-  "/home/lawrence/Desktop/UCLA/ECE231A/HW3/file.tex" 1666626260 1083 2e7aa2565b754db06b2b30d70ded0dab ""
+  "/home/lawrence/Desktop/UCLA/ECE231A/HW3/file.tex" 1666636298 1200 58c8b2ab143b398cdee466dc10111254 ""
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1650183167 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1650183167 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1650183167 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -74,8 +74,9 @@
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1650183167 39911 2da6c67557ec033436fe5418a70a8a61 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1664181003 4278762 af3ac1370db81a450c1118eabf1fe718 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1664180997 2927662 8abb6a156a082ea6dea184c06b278d09 ""
-  "file.aux" 1666626261 32 044b7f8fc9779af7531264e0c5c84b6d "pdflatex"
-  "file.tex" 1666626260 1083 2e7aa2565b754db06b2b30d70ded0dab ""
+  "fig1.jpg" 1666636163 87532 961f2c5c9d30d1a664aed35e10fcbed5 ""
+  "file.aux" 1666636298 32 ab05033ccbb38b00a31b200ccedf8001 "pdflatex"
+  "file.tex" 1666636298 1200 58c8b2ab143b398cdee466dc10111254 ""
   (generated)
   "file.aux"
   "file.log"
