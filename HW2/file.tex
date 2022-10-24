@@ -4,7 +4,11 @@
 \maketitle
 \section*{Problem 1}
 \subsection*{(a)}
-No this is not necessqarily true.  Consider the following example:
+No this is not necessarily true.  Consider the following example:
+$X_1$ is mutually independent fo $X_2$, but conditional on $X_3$ they are
+not independent.
+Therefore $I(X_1;X_2)=0$ but $I(X_1;X_2|X_3)>0$. Therefore 
+$I(X_1;X_2;X_3)<0$ in this case. 
 
 \subsection*{(b)}
 We have that
@@ -56,7 +60,23 @@ since $X$ and $U$ are indepndent we have
 $$I(X;Y|U)=H(X)-H(X|Y,U)$$
 Since $I(X;Y,U)$ we get:
 $$I(X;Y,U)=I(X;Y|U)$$
-
+Since $H(X|Y,Z)=0$, $H(X|U,Y,Z)=0$ since conditioning reduces probability
+but entropy cannot be negative. Then we have
+\begin{align*}
+    H(X|Y,U)&=H(X,Z|Y,U)-H(Z|X,Y,U)\\
+    &\leq H(X,Z|Y,U)\\
+    &= H(X,Z,Y,U)-H(Y,U)\\
+    &=H(X|U,Y,Z)+H(U,Y,Z)-H(Y,U)\\
+    &=H(U,Y,Z)-H(Y,U)\\
+    &=H(Z|U,Y)\\
+    &\leq H(Z|U)
+\end{align*}
+Therefore we have that 
+$$H(X|Y,U)\leq H(Z|U)$$
+Therefore 
+$$H(X)-H(X|Y,U)\geq H(X)-H(Z|U)$$
+Therefore we have that 
+$$I(X;Y,U)=I(X;Y|U)\geq H(X)-H(Z|U)$$
 \section*{Problem 3}
 \subsection*{(a)}
 Let the increase in Alice's score after the ith round be 
@@ -96,6 +116,84 @@ $$E[Z_A^i]=\frac{4}{15}+\frac{5}{15}\alpha$$
 To make this greater than $3.2666$ we would have that
 $\boxed{\alpha>9}$, 
 \section*{Problem 4}
+\subsection*{(a)}
+We have that $H(\hat{p}(Y_m)|Y_m)=0$ and $H(\hat{p}(Y_m)|Y_m,p)=0$, therefore
+we have that $I(\hat{p}(Y_m);p|Y_m)=0$ 
+\begin{align*}
+    I(p;Y_m|\hat{p})+I(\hat{p}(Y_m);p)&=I(\hat{p}(Y_m);p,Y_m)
+            =I(p;\hat{p}(Y_m)|Y_m)+I(p;Y_m)\\
+            I(\hat{p}(Y_m);p)+I(\hat{p}(Y_m);p)&=I(p;Y_m)\\
+            I(\hat{p}(Y_m);p)&\leq I(p;Y_m)
+\end{align*}
+With the last line coming from the fact that $I(\hat{p}(Y_m);p)\geq0$
+\subsection*{(b)}
+If $\sum_{i=1}^{n}X_{i}^m\neq k$ then  $\hat{p}(Y_m)\neq \frac{k}{n}$
+therefore we must have 
+$P[Y_m|\hat{p}(Y_m)=\frac{k}{n}]=0$ for all $\sum_{i=1}^{n}X_{i}^m\neq k$.
+If $\sum_{i=1}^{n}X_{i}^m=k$ then we have $n \choose k$ possible 
+$Y_m$, since $X_{i}^m$ is iid, each of these are equally probable therefor we have
+$$P[Y_m|\hat{p}(Y_m)=\frac{k}{n}]=\begin{cases}
+    \frac{1}{{n \choose k}} & \text{if } \sum_{i=1}^{n}X_{i}^m=k\\
+    0 & \text{otherwise}
+\end{cases}$$
+\subsection*{(c)}
+Let $\hat{p}=\hat{p}(Y_m)$ First let us prove that 
+$P(Y_m|\hat{p},p)=P(Y_m|\hat{p})$.
+\begin{align*}
+    P(Y_m|\hat{p},p)&=P(Y_m|\hat{p})\\
+    P(Y_m,\hat{p},p)&=P(Y_m|\hat{p})p(\hat{p}|p)p(p)
+\end{align*}
+For all the cases of $Y_m$ such that $\sum_{i=1}^{n}X_{i}^m\neq k$ we have that
+$P(Y_m,\hat{p},p)=0$ and $P(Y_m|\hat{p})=0$, therefore we will only need to Consider
+the cases where $\sum_{i=1}^{n}X_{i}^m=k$, for these cases we have
+\begin{align*}
+    P(Y_m,\hat{p},p)&=\frac{1}{{n\choose k}}p(\hat{p}|p)p(p)
+\end{align*}
+Since $X_{i}^m$ is iid we have that $p(\hat{p}|p)={n\choose k}p(Y_m|p)$, therefore
+Therefore we have that 
+\begin{align*}
+    P(Y_m,\hat{p},p)&=p(Y_m|p)p(p)\\
+    &=P(Y_m,p)
+\end{align*}
+This is true since $\hat{p}$ is a function of $Y_m$. Therefore we have that,
+$p$, $\hat{p}$ and $Y_m$ form the following Markov chain:
+$$p\rightarrow \hat{p}\rightarrow Y_m$$
+Therefore from the data processing inequality we have 
+$$I(\hat{p}(Y_m);p)\geq I(p;Y_m)$$
+therefore from this and problem 4(a) we have that
+$$I(\hat{p}(Y_m);p|Y_m)= I(p;Y_m)$$
+\subsection*{(d)}
+From part (c) we have that $I(p;\hat{p}(Y_i))=I(p;Y_i)$, therefore we have that
+we just need to prove 
+$$I(Y_{i};p)\geq I(Y_{j};p)$$
+If we prove this inequality for $j=i+1$, we have
+proved it for all $j>i$. Since $H(Y_{i+1}|Y_i,p)=H(Y_{i+1}|Y_i)$, therefore we have that 
+$I(Y_{i+1};p|Y_i)=0$ therefore we have
+\begin{align*}
+    I(Y_i;p|Y_{i+1})+I(Y_{i+1};p)&=I(Y_i;p,Y_{i+1})=I(Y_{i+1};p|Y_i)+I(Y_{i};p)\\
+    I(Y_i;p|Y_{i+1})+I(Y_{i+1};p)&=I(Y_{i};p)\\
+    I(Y_{i+1};p)&\leq I(Y_{i};p)
+\end{align*}
+With the last line coming from the fact that $I(Y_i;p|Y_{i+1})\geq0$
+Therefore we have that 
+$$I(Y_{i};p)\geq I(Y_{j};p)$$
+for all $j>i$.
+\subsection*{(e)}
+From part (d) we have that the $Y_i$'s form a markov chain
+thus we have that 
+$$Y_i\rightarrow Y_{i+1}\rightarrow Y_{i+2}\rightarrow \cdots Y_{m-1}\rightarrow Y_m$$
+Since $\hat{p}(Y_m)$ is a function of $Y_m$ we have that 
+$$Y_i\rightarrow Y_{i+1}\rightarrow \cdots Y_{m-1}\rightarrow Y_m\rightarrow \hat{p}(Y_m)$$
+Forms a markov chain as well. We have
+\begin{align*}
+    I(\hat{p}(Y_m);Y_{m-1}|Y_i)&\geq I(\hat{p}(Y_m);Y_{m-1}|Y_j)\\
+    H(\hat{p}(Y_m)|Y_i)-H(\hat{p}(Y_m)|Y_i,Y_{m-1})&\geq H(\hat{p}(Y_m)|Y_j)-H(\hat{p}(Y_m)|Y_j,Y_{m-1})\\
+    H(\hat{p}(Y_m)|Y_i)-H(\hat{p}(Y_m)|Y_{m-1})&\geq H(\hat{p}(Y_m)|Y_j)-H(\hat{p}(Y_m)|Y_{m-1})\\
+    H(\hat{p}(Y_m)|Y_i)&\geq H(\hat{p}(Y_m)|Y_j)
+\end{align*}
+We can see that this is intuitively true, since $Y_{1}$ is "further" from 
+$Y_{m}$ and $\hat{p}(Y_m)$ than $Y_{j}$ is, therefore it has less 
+"determination" on $Y_{m}$ and $\hat{p}(Y_m)$.
 \section*{Problem 5}
 \subsection*{(a)}
 In order for $\mu=[\mu_1,\mu_2]^T$ to be a stationary distribution for 
@@ -106,7 +204,7 @@ $$\frac{3}{4}\mu_1+\frac{1}{3}\mu_2=\mu_2$$
 Solving these we get, and applying the condition that $\mu_1+\mu_2=1$,
 we get $\mu_1=\frac{\frac{2}{3}}{\frac{3}{4}+\frac{2}{3}}=\boxed{0.470}$ and
 $\mu_2=\frac{\frac{3}{4}}{\frac{3}{4}+\frac{2}{3}}=\boxed{0.529}$ Therefore the 
-entropy of this $H(X)=-0.470\log_2(0.470)-0.529\log_2(0.529)=\boxed{-0.9975\text{ shannons}}$
+entropy of this $H(X)=-0.470\log_2(0.470)-0.529\log_2(0.529)=\boxed{0.9975\text{ shannons}}$
 \subsection*{(b)}
 We have that 
 \begin{align*}
@@ -122,10 +220,24 @@ since conditioning reduces entropy, thus we have that
 $H(X_n|X_{n-1},\dots,X_1)<H(X)$.
 \subsection*{(c)}
 Since we can determine $X_n$ given $Y_n,...,Y_1$ and since 
-$Y_n$ is a determinist function we have
+$Y_n$ is a deterministic function we have
 $$H(Y_n|Y_{n-1},\dots,Y_1)=H(X_{n}|X_{n-1},...,X_1)$$
 And therefore we have that 
 $\mathcal{H}(Y)=\mathcal{H}(X)=\boxed{0.8679345589507923}$
 \subsection*{(d)}
+We have that 
+$$H(Y_n,X_n,X_{n-1})=H(Y_n|X_n,X_{n-1})+H(X_n,X_{n-1})=H(Y_n)+H(X_n,X_{n-1}|Y_n)$$
+Therefore we get 
+$$H(X_n,X_{n-1})=H(Y_n)+H(X_n,X_{n-1}|Y_n)$$
+Since XOR if given one of the values, we can imediately determine the other
+value we have 
+\begin{align*}
+    H(X_n,X_{n-1})&=H(Y_n)+H(X_{n-1})\\
+    H(X_n|X_{n-1})&=H(Y_n)\\
+    H(Y_n)&=\mathcal{H}(X)\\
+    H(Y_n)&=\boxed{0.8679345589507923}
+\end{align*}
+
+
 
 \end{document}
