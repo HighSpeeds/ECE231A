@@ -225,18 +225,11 @@ $$H(Y_n|Y_{n-1},\dots,Y_1)=H(X_{n}|X_{n-1},...,X_1)$$
 And therefore we have that 
 $\mathcal{H}(Y)=\mathcal{H}(X)=\boxed{0.8679345589507923}$
 \subsection*{(d)}
-We have that 
-$$H(Y_n,X_n,X_{n-1})=H(Y_n|X_n,X_{n-1})+H(X_n,X_{n-1})=H(Y_n)+H(X_n,X_{n-1}|Y_n)$$
-Therefore we get 
-$$H(X_n,X_{n-1})=H(Y_n)+H(X_n,X_{n-1}|Y_n)$$
-Since XOR if given one of the values, we can imediately determine the other
-value we have 
-\begin{align*}
-    H(X_n,X_{n-1})&=H(Y_n)+H(X_{n-1})\\
-    H(X_n|X_{n-1})&=H(Y_n)\\
-    H(Y_n)&=\mathcal{H}(X)\\
-    H(Y_n)&=\boxed{0.8679345589507923}
-\end{align*}
+We have that the probability of $X_n$ being different from $X_{n-1}$
+is just 
+$$P(Y_n=1)=\frac{3}{4}\mu_1+\frac{2}{3}\mu_2=0.705$$
+Therefore we have 
+$$H(Y_n)=-P(Y_n=1)\log_2(P(Y_n=1))-(1-P(Y_n=1))\log_2(1-P(Y_n=1))=\boxed{0.8739}$$
 
 
 
