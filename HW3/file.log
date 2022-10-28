@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Arch Linux) (preloaded format=pdflatex 2022.9.26)  27 OCT 2022 13:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Arch Linux) (preloaded format=pdflatex 2022.9.26)  28 OCT 2022 05:02
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -262,27 +262,27 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 Runaway argument?
  E\left [\left (\prod _{i=1}^nf(X_i)\right )^{\frac {1}{n}}\right ]&=\ETC.
-/home/lawrence/Desktop/UCLA/ECE231A/HW3/file.tex:18: Paragraph ended before \align* was complete.
+/home/lawrence/Desktop/UCLA/ECE231A/HW3/file.tex:19: Paragraph ended before \align* was complete.
 <to be read again> 
                    \par 
-l.18 
+l.19 
      
 I suspect you've forgotten a `}', causing me to apply this
 control sequence to too much text. How can we recover?
 My plan is to forget the whole thing and hope for the best.
 
-/home/lawrence/Desktop/UCLA/ECE231A/HW3/file.tex:18: Missing $ inserted.
+/home/lawrence/Desktop/UCLA/ECE231A/HW3/file.tex:19: Missing $ inserted.
 <inserted text> 
                 $
-l.18 
+l.19 
      
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
-/home/lawrence/Desktop/UCLA/ECE231A/HW3/file.tex:18: Missing \endgroup inserted.
+/home/lawrence/Desktop/UCLA/ECE231A/HW3/file.tex:19: Missing \endgroup inserted.
 <inserted text> 
                 \endgroup 
-l.18 
+l.19 
      
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -290,16 +290,16 @@ With luck, this will get me unwedged. But if you
 really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
-/home/lawrence/Desktop/UCLA/ECE231A/HW3/file.tex:18: Display math should end with $$.
+/home/lawrence/Desktop/UCLA/ECE231A/HW3/file.tex:19: Display math should end with $$.
 <to be read again> 
                    \tex_par:D 
-l.18 
+l.19 
      
 The `$' that I just saw supposedly matches a previous `$$'.
 So I shall assume that you typed `$$' both times.
 
-/home/lawrence/Desktop/UCLA/ECE231A/HW3/file.tex:19: Misplaced alignment tab character &.
-l.19     &
+/home/lawrence/Desktop/UCLA/ECE231A/HW3/file.tex:20: Misplaced alignment tab character &.
+l.20     &
           \leq \exp\left[\frac{1}{n}E\left[\ln\left(\prod_{i=1}^nf(X_i)\righ...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -308,31 +308,19 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-/home/lawrence/Desktop/UCLA/ECE231A/HW3/file.tex:19: Missing $ inserted.
+/home/lawrence/Desktop/UCLA/ECE231A/HW3/file.tex:20: Missing $ inserted.
 <inserted text> 
                 $
-l.19     &\leq
+l.20     &\leq
                \exp\left[\frac{1}{n}E\left[\ln\left(\prod_{i=1}^nf(X_i)\righ...
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
-
-/home/lawrence/Desktop/UCLA/ECE231A/HW3/file.tex:20: Misplaced alignment tab character &.
-<recently read> &
-                 
-l.20     &
-          =\exp\left[\frac{1}{n}\sum_{i=1}^nE\left[\ln\left(f(X_i)\right)\ri...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
 
 /home/lawrence/Desktop/UCLA/ECE231A/HW3/file.tex:21: Misplaced alignment tab character &.
 <recently read> &
                  
 l.21     &
-          \leq \exp\left[\frac{1}{n}\sum_{i=1}^nE[X_i]\right]\\
+          =\exp\left[\frac{1}{n}\sum_{i=1}^nE\left[\ln\left(f(X_i)\right)\ri...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -344,6 +332,18 @@ might try typing `S' now just to see what is salvageable.
 <recently read> &
                  
 l.22     &
+          \leq \exp\left[\frac{1}{n}\sum_{i=1}^nE[X_i]\right]\\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/lawrence/Desktop/UCLA/ECE231A/HW3/file.tex:23: Misplaced alignment tab character &.
+<recently read> &
+                 
+l.23     &
           =\exp\left[E[X_i]\right]
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -352,10 +352,46 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-/home/lawrence/Desktop/UCLA/ECE231A/HW3/file.tex:23: Misplaced \cr.
+/home/lawrence/Desktop/UCLA/ECE231A/HW3/file.tex:26: Misplaced alignment tab character &.
+<recently read> &
+                 
+l.26         &
+              \leq \left(E\left[\prod_{i=1}^nf(X_i)\right]\right)^{\frac{1}{...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/lawrence/Desktop/UCLA/ECE231A/HW3/file.tex:27: Misplaced alignment tab character &.
+<recently read> &
+                 
+l.27         &
+              =\left(E^n[f(X_1)]\right)^{\frac{1}{n}}\\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/lawrence/Desktop/UCLA/ECE231A/HW3/file.tex:28: Misplaced alignment tab character &.
+<recently read> &
+                 
+l.28         &
+              =E[f(X_1)]
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+/home/lawrence/Desktop/UCLA/ECE231A/HW3/file.tex:30: Misplaced \cr.
 \math@cr@@@ ->\cr 
                   
-l.23 \end{align*}
+l.30 \end{align*}
                  
 I can't figure out why you would want to use a tab mark
 or \cr or \span just now. If something like a right brace
@@ -363,26 +399,26 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-/home/lawrence/Desktop/UCLA/ECE231A/HW3/file.tex:23: Misplaced \noalign.
+/home/lawrence/Desktop/UCLA/ECE231A/HW3/file.tex:30: Misplaced \noalign.
 \math@cr@@ ... \iffalse }\fi \math@cr@@@ \noalign 
                                                   {\vskip #1\relax }
-l.23 \end{align*}
+l.30 \end{align*}
                  
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
 
-/home/lawrence/Desktop/UCLA/ECE231A/HW3/file.tex:23: Missing $ inserted.
+/home/lawrence/Desktop/UCLA/ECE231A/HW3/file.tex:30: Missing $ inserted.
 <inserted text> 
                 $
-l.23 \end{align*}
+l.30 \end{align*}
                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
-/home/lawrence/Desktop/UCLA/ECE231A/HW3/file.tex:23: Missing } inserted.
+/home/lawrence/Desktop/UCLA/ECE231A/HW3/file.tex:30: Missing } inserted.
 <inserted text> 
                 }
-l.23 \end{align*}
+l.30 \end{align*}
                  
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -390,10 +426,13 @@ With luck, this will get me unwedged. But if you
 really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
-/home/lawrence/Desktop/UCLA/ECE231A/HW3/file.tex:23: Extra }, or forgotten \endgroup.
+[1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+/home/lawrence/Desktop/UCLA/ECE231A/HW3/file.tex:30: Extra }, or forgotten \endgroup.
 \math@cr@@ ...th@cr@@@ \noalign {\vskip #1\relax }
                                                   
-l.23 \end{align*}
+l.30 \end{align*}
                  
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -401,23 +440,23 @@ you forgot something else, as in `\hbox{$x}'. In such cases
 the way to recover is to insert both the forgotten and the
 deleted material, e.g., by typing `I$}'.
 
-/home/lawrence/Desktop/UCLA/ECE231A/HW3/file.tex:23: Misplaced \noalign.
+/home/lawrence/Desktop/UCLA/ECE231A/HW3/file.tex:30: Misplaced \noalign.
 \black@ #1->\noalign 
                      {\ifdim #1>\displaywidth \dimen@ \prevdepth \nointerlin...
-l.23 \end{align*}
+l.30 \end{align*}
                  
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
 
 
-Overfull \hbox (240.5472pt too wide) detected at line 23
+Overfull \hbox (240.5472pt too wide) detected at line 30
 []
  []
 
-/home/lawrence/Desktop/UCLA/ECE231A/HW3/file.tex:23: Extra }, or forgotten \endgroup.
+/home/lawrence/Desktop/UCLA/ECE231A/HW3/file.tex:30: Extra }, or forgotten \endgroup.
 \endalign ->\math@cr \black@ \totwidth@ \egroup 
                                                 \ifingather@ \restorealignst...
-l.23 \end{align*}
+l.30 \end{align*}
                  
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -425,10 +464,10 @@ you forgot something else, as in `\hbox{$x}'. In such cases
 the way to recover is to insert both the forgotten and the
 deleted material, e.g., by typing `I$}'.
 
-/home/lawrence/Desktop/UCLA/ECE231A/HW3/file.tex:23: Missing $ inserted.
+/home/lawrence/Desktop/UCLA/ECE231A/HW3/file.tex:30: Missing $ inserted.
 <inserted text> 
                 $
-l.23 \end{align*}
+l.30 \end{align*}
                  
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -436,23 +475,20 @@ With luck, this will get me unwedged. But if you
 really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
-/home/lawrence/Desktop/UCLA/ECE231A/HW3/file.tex:23: Display math should end with $$.
+/home/lawrence/Desktop/UCLA/ECE231A/HW3/file.tex:30: Display math should end with $$.
 <to be read again> 
                    \endgroup 
-l.23 \end{align*}
+l.30 \end{align*}
                  
 The `$' that I just saw supposedly matches a previous `$$'.
 So I shall assume that you typed `$$' both times.
 
-[1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 <fig1.jpg, id=19, 1098.1025pt x 823.075pt>
 File: fig1.jpg Graphic file (type jpg)
 <use fig1.jpg>
-Package pdftex.def Info: fig1.jpg  used on input line 32.
+Package pdftex.def Info: fig1.jpg  used on input line 39.
 (pdftex.def)             Requested size: 274.52495pt x 205.76823pt.
- [2 <./fig1.jpg>] [3] (./file.aux) ) 
+[2] [3 <./fig1.jpg>] (./file.aux) ) 
 Here is how much of TeX's memory you used:
  6747 strings out of 478238
  105926 string characters out of 5850456
@@ -462,7 +498,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  74i,13n,82p,368b,265s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on file.pdf (3 pages, 216704 bytes).
+Output written on file.pdf (3 pages, 218559 bytes).
 PDF statistics:
  80 PDF objects out of 1000 (max. 8388607)
  47 compressed objects within 1 object stream
