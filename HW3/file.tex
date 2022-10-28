@@ -14,7 +14,8 @@
 \subsection*{(b)}
 \begin{align*}
     E\left[\left(\prod_{i=1}^nf(X_i)\right)^{\frac{1}{n}}\right]&=
-        \exp\left[\ln\left(E\left[\left(\prod_{i=1}^nf(X_i)\right)\right]\right)\right]\\
+        \exp\left[\ln\left(E\left[\left(\prod_{i=1}^nf(X_i)\right)^{\frac{1}{n}}\right]\right)\right]\\
+        
     &\leq \exp\left[\frac{1}{n}E\left[\ln\left(\prod_{i=1}^nf(X_i)\right)\right]\right]\\
     &=\exp\left[\frac{1}{n}\sum_{i=1}^nE\left[\ln\left(f(X_i)\right)\right]\right]\\
     &\leq \exp\left[\frac{1}{n}\sum_{i=1}^nE[X_i]\right]\\
