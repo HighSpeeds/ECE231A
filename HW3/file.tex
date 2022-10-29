@@ -68,8 +68,31 @@ $$F(X^1X^2)=\begin{cases}
 Therefore the interval corresponding to AC is 
 $[0.1,0.2)$
 \subsection*{(c)}
+For the interval $[0,0.2)$, 
+we have that the midpoint is $0.1$ and the length is $
+-\lceil \log_2(0.2)\rceil +1=4$ bits. Therefore the code word is 
+$\boxed{0001}$\\
+For the interval $[0.1,0.2)$, we have that 
+the midpoint is $0.15$ and the length is $
+-\lceil \log_2(0.01)\rceil +1=8$ bits, so the code word is
+$\boxed{00100}$
+\subsection*{(d)}
 Therefore the cdf for 
-$$F(X^1X^2X^3X^4)=0.1+0.1*0.6=0.16$$
-Therefore we have that 
-$$\bar{F}=0.16-0.1*0.6/2=0.14$$
+$$F(X^1X^2X^3X^4=ACCB)=0.1+0.1*0.6=0.175$$
+And thus we have that interval for the ACCB
+is $[0.15,0.16)$ so the midpoint is 
+$$\bar{F}=\frac{0.16+0.175}{2}=0.1675$$
+And since $p=0.2\cdot 0.5^2 \cdot 0.3=0.015$, we have that
+$$l=-\lceil \log_2(0.015)\rceil +1=8$$
+Thus we have that the SFE code for ACCB is $\boxed{00101010}$
+\subsection*{(e)}
+The binary encoding for $0.16$ is $0.001010001111010111$
+and the binary encoding for $0.1675$ is $0.001010101110000101$
+and the binary encoding for $0.175$ is $0.00101100110011001101$. Therefore
+5 bits can be know if we do not know how ACCB continues.
+\section*{Problem 4}
+$$\boxed{ABBBCABBBCAAABB}$$
+
+
+
 \end{document}
