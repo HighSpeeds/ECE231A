@@ -1,0 +1,37 @@
+\include{"../preamble.tex"}
+\title{ECE 231A Project 3 Part 2}
+\begin{document}
+\maketitle
+\section*{Problem 1}
+We can rewrite $P(l(x)<l'(x))>P(l(x)>l'(x))$ as
+\begin{align*}
+    \sum_{x} p(x)sign(l(x)-l'(x))&\leq 0
+\end{align*}
+using the identity $sign(a-b)\leq D^t-1$, we get
+\begin{align*}
+    \sum_{x} p(x)sign(l(x)-l'(x))&\leq \sum_{x} p(x)\left(D^{l(x)-l'(x)}+1\right)\\
+    &=\sum_{x}D^{l'(x)}-1
+\end{align*}
+From the kraft inequality, we then get that $\sum_{x}D^{l'(x)}\leq 1$.
+and thus we get that $\sum_{x}D^{l'(x)}-1\leq 0$.
+\section*{Problem 2}
+\subsection*{(a)}
+let $l'(x)=-\log(q(x))$, then we have
+\begin{align*}
+    p(l'(x)\leq l^*(x)-\gamma)&=p(-\log_D(q(x))\leq -\log_D(p(x))-\gamma)\\
+    &=p(q(x)\geq p(x)D^{\gamma})\\
+    &=\sum_{x:p(x)D^{\gamma}\leq q(x)}p(x)\\
+    &\leq \sum_{x:p(x)D^{\gamma}\leq q(x)}q(x)D^{-\gamma}\\
+    &=\sum_{x}q(x)D^{-\gamma}\\
+    &=D^{-\gamma}
+\end{align*} 
+Thus we get
+$$
+    p(l'(x)\leq l^*(x)-\gamma)\leq |D|^{-\gamma}$$   
+\subsection*{(b)}
+We have 
+\begin{align*}
+    p(l(x)>l'(x)+1)&=p\left(\lceil \log_D\left(\frac{1}{p(x)}\right)\rceil >l'(x)+1\right)\\
+    &\leq p(log_D(\left())
+\end{align*}
+\end{document}
