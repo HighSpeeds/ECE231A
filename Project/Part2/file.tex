@@ -32,6 +32,16 @@ $$
 We have 
 \begin{align*}
     p(l(x)>l'(x)+1)&=p\left(\lceil \log_D\left(\frac{1}{p(x)}\right)\rceil >l'(x)+1\right)\\
-    &\leq p(log_D(\left())
+    &\leq p(1-log_D(p(x))>l'(x)+1)\\
+    &=\leq p(-\log_D(p(x))<l'(x))
 \end{align*}
+Since $l(x)$ must be an integer we have that this is equal to 
+$$p(-\log_D(p(x))<l'(x))=p(l'(x)\leq-\log_D(p(x))-1)$$
+from part (a) we know that 
+$$p(l'(x)\leq-\log_D(p(x))-1)\leq D^{-1}\leq \frac{1}{2}$$
+since $D\geq 2$. thus we have that 
+$$p(l(x)>l'(x)+1)\leq \frac{1}{2}$$
+and thus 
+$$p(l(x)>l'(x)+1)\leq p(l(x)\leq l'(x)+1)$$
+
 \end{document}
