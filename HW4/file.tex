@@ -1,0 +1,66 @@
+\include{"../preamble.tex"}
+\title{ECE 231A HW 3}
+\begin{document}
+\maketitle
+\section*{Problem 1}
+\subsection*{(a)}
+Then we have
+$$I(X;Y|Z)=H(Y|Z)-H(Y|X,Z)=H(Y|Z)=\alpha H(p)$$
+Thus we have that the capacity is $\alpha$
+\subsection*{(b)}
+We have 
+\begin{align*}
+    I(X;Y)&=H(Y)-H(Y|X)\\
+    &=-p\alpha \log_2(p\alpha)-(1-p\alpha) \log_2((1-p\alpha))-H(Y|X)\\
+    &=-p\alpha \log_2(p\alpha)-(1-p\alpha) \log_2((1-p\alpha))-pH(\alpha)
+\end{align*}
+To find its maximum, we take its derivative and set it to 0
+\begin{align*}
+    \frac{\partial I(X;Y)}{\partial p}&=0\\
+    -\alpha \log_2(p\alpha)-\frac{\alpha}{\ln(2)}+\alpha \log_2(1-p\alpha)+\frac{\alpha}{\ln(2)}-H(\alpha)&=0\\
+    -H(\alpha)&= \alpha\log_2(p\alpha)-\alpha \log_2(1-p\alpha)\\
+    2^{\frac{-H(\alpha)}{\alpha}}&=\frac{p\alpha}{1-p\alpha}\\
+    p&=\boxed{\frac{1}{\alpha(2^{\frac{H(\alpha)}{\alpha}}+1)}}
+\end{align*}
+\section*{Problem 2}
+\subsection*{(a)}
+We have that,
+\begin{align*}
+    I(X;Y|S)&=H(Y|S)-H(Y|X,S)\\
+    &=H(Y,S)-H(S)-H(Y,X,S)-H(S,X)\\
+    &=I(X,S;Y,S)-H(S)
+\end{align*}
+And thus 
+$$I(X,S;Y,S)=I(X;Y|S)+H(S)$$
+\subsection*{(b)}
+We have that 
+\begin{align*}
+    C&=\max_{p_S(s)}\left(\max_{p_X(x|s)}\left(I(X,S;Y,S)\right)\right)\\
+    &=\max_{p_S(s)}\left(\max_{p_X(x|s)}\left(I(X;Y|S)+H(S)\right)\right)\\
+    &=\max_{p_S(s)}\left(H(S)+\max_{p_X(x|s)}\left(I(X;Y|S)\right)\right)\\
+    &=\max_{p_S(s)}\left(H(S)+\max_{p_X(x|s)}\left(H(Y|S)+H(X|S)-H(Y,X|S)\right)\right)\\
+    &=\max_{p_S(s)}\left(H(S)+\max_{p_X(x|s)}\left(\sum_{s=1}^{K}p_S(s)(H(Y|S=s)+H(X|S=s)-H(Y,X|S=s))\right)\right)\\
+    &=\max_{p_S(s)}\left(H(S)+\sum_{s=1}^{K}p_S(s)C_s\right)
+\end{align*}
+\subsection*{(c)}
+We have that we want the following constraint to be true
+$$\sum_{s=1}^{K}p_S(s)=1$$
+So then with a lagrangian we have
+$$\frac{\partial}{\partial p_S(s)}\left(H(S)+\sum_{s=1}^{K}p_S(s)C_s+\lambda\sum_{s=1}^{K}p_S(s)-1\right)=-\log_2(p_S(s))-\frac{1}{\ln(2)}+C_s+\lambda$$
+Setting this equal to 0 we get that 
+$$p_S*(s)=2^{-\frac{1}{\log2(e)}}2^{\lambda}2^{C_s}$$
+since $\sum_{s=1}^{K}p_S*(s)=1$, we have
+$$2^{\lambda}=\frac{1}{2^{-\frac{1}{\log2(e)}}\sum_{s=1}^{K}2^{C_s}}$$
+And thus we have 
+$$p_S*(s)=\boxed{\frac{2^{C_s}}{\sum_{s=1}^{K}2^{C_s}}}$$
+\subsection*{(d)}
+Then we have that 
+\begin{align*}
+    H(S)&=-\sum_{s=1}^{K}p_S(s)\log_2(p_S(s))\\
+    &=\log_2\left(\sum_{s=1}^{K}2^{C_s}\right)-\sum_{s=1}^{K}p_S(s) C_s
+\end{align*}
+Thus we have that
+$$C=H(S)+\sum_{s=1}^{K}p_S(s) C_s=\log_2\left(\sum_{s=1}^{K}2^{C_s}\right)$$
+\section*{Problem 3}
+
+\end{document}
