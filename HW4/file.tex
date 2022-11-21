@@ -68,4 +68,19 @@ dependent on the input $X$. Thus we have that
 $$I(S,Y_1,Y_2)=H(S)-H(S|Y_1,Y_2)=H(S)$$
 \subsection*{(b)}
 
+\section*{Problem 5}
+\subsection*{(a)}
+We have that 
+$$I(X;Y)=H(X)-H(X|Y)=H(X)-pH(X|Y=E)-(1-p)H(X|Y=X)$$
+$$I(X;Y)=H(X)-pH(X|Y=E)=(1-p)H(X)$$
+thus to maximize we just have all the values of $X$ be equally likely
+thus we will have
+$$\boxed{C=(1-p)\log_2(L)}$$
+\subsection*{(b)}
+Since feedback cannot increase the capacity of the channel, we have that
+the capacity still is $\boxed{(1-p)\log_2(L)}$
+\subsection*{(c)}
+Once again since feedback cannot increase the capacity of the channel, we have that
+the capacity still is $\boxed{(1-p)\log_2(L)}$
+
 \end{document}
