@@ -73,7 +73,14 @@ This will give us that the capacity of this channel is
 $1-\alpha$. Thus we have that the minimum capacity
 of the noiseless channel is $\alpha$.
 \subsection*{(c)}
-
+Send one symbol through the
+erasure channel and one through the noiseless channel, 
+then if the fraction of the symbols through the 
+noiseless is greater than $\alpha$, we send the next
+symbol through the noisy channel, and if it 
+is less than $\alpha$, we send the next symbol
+through the noiseless channel. This will
+converge to $\alpha$ with time.
 \subsection*{(d)}
 We have that
 \begin{align*}
