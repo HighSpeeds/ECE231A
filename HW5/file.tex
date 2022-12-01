@@ -1,0 +1,73 @@
+\include{"../preamble.tex"}
+\title{ECE 231A HW 5}
+\begin{document}
+\maketitle
+\section*{Problem 1}
+\subsection*{(a)}
+First let us prove that 
+$$\min_{i}\frac{a_i}{b_i}\leq\frac{\sum_{i=1}^{n}a_i}{\sum_{i=1}^{n}b_i}\leq\max_{i}\frac{a_i}{b_i}$$
+We can prove this through induction, we already have that 
+the base case when $n=2$ is true. Now
+we consider the case the case of $n+1$, let us 
+arrange the $a_i$ and $b_i$ in such a way such that 
+$\frac{a_{n+1}}{b_{n+1}}$ be the minimum of the $n+1$ $\frac{a_{i}}{b_{i}}$'s. 
+Then we have that  
+$$\frac{a_{n+1}}{b_{n+1}} \leq \min_{1\leq i\leq n}\frac{a_i}{b_i}
+\leq \frac{\sum_{i=1}^{n}a_i}{\sum_{i=1}^{n}b_i}$$
+Therefore we have that 
+$$\min_{i}\frac{a_i}{b_i}\leq\frac{\sum_{i=1}^{n+1}a_i}{\sum_{i=1}^{n+1}b_i}
+\leq\frac{\sum_{i=1}^{n}a_i}{\sum_{i=1}^{n}b_i}\leq \max_{i}\frac{a_i}{b_i}$$
+Thus we have proven that $\frac{\sum_{i=1}^{n}a_i}{\sum_{i=1}^{n}b_i}$ 
+is bounded by the minimum and maximum of the $\frac{a_i}{b_i}$'s. Using this property we get
+that 
+$$\frac{\sum_{x\in \mathcal{X}}\tilde{P}_X(x)D(W_{Y|X}||P_Y)}
+{\sum_{x\in \mathcal{X}}\tilde{P}_X(x)c(x)}\leq 
+\max_{x\in \mathcal{X}} \frac{\tilde{P}_X(x)D(W_{Y|X}||P_Y)}{\tilde{P}_X(x)c(x)}=\max_{x\in \mathcal{X}} \frac{D(W_{Y|X}||P_Y)}{c(x)}$$
+\subsection*{(b)}
+We have that 
+
+\section*{Problem 2}
+\subsection*{(a)}
+We have that in order to maximize the 
+differential entropy of $Z$ we want to maximize
+the variance of $Z$, this is given by 
+$$\text{Var}(Z)=E[(Z_1+Z_2)^2]-(E[Z_1+Z_2])^2$$
+Since $Z_1$ is independent of $Z_2$ we have that
+$E[Z_1Z_2]=E[Z_1]E[Z_2]$, thus we get that 
+$$\text{Var}(Z)=E[Z_1^2]+E[Z_2^2]-E^2[Z_1]-E^2[Z_2]\leq 2\sigma^2 -E^2[Z_1]-E^2[Z_2]$$
+Therefore in order for this to be maximized, we want $E[Z_1]=E[Z_2]=0$. 
+Thus we get that both $Z_1$ and $Z_2$ are Gaussian with mean 0. And that 
+the maximal differential entropy of $Z$ is given by $\frac{1}{2}\log(4\pi \sigma^2)+\frac{1}{2}$.
+\subsection*{(b)}
+Once again we want to maximize the differential entropy of $Z$,
+and thus we want to maximize the variance of $Z$, this is given by
+$$\text{Var}(Z)=E[(\sum_{i=1}^{n}Z_i)^2]-(E[\sum_{i=1}^{n}Z_i])^2$$
+We have that 
+$$\left(\sum_{i=1}^{n}Z_i\right)^2=\sum_{i=1}^{n}Z_i^2+\sum_{i\neq j}Z_iZ_j$$
+And
+$$E^2[\sum_{i=1}^{n}Z_i]=\sum_{i=1}^{n}E^2[Z_i]+\sum_{i\neq j}E[Z_i]E[Z_j]$$
+Since $Z_i$'s are independent we have that
+$$E[Z_iZ_j]-E[Z_i]E[Z_j]=0$$
+For all $i\neq j$, thus we get that
+$$\text{Var}(Z)=\sum_{i=1}^{n}E[Z_i^2]-\sum_{i=1}^{n}E^2[Z_i]=n\sigma^2-\sum_{i=1}^{n}E^2[Z_i]$$
+Therefore we must have that $E[Z_i]=0$ for all $i$, thus we get that
+the maximum differential entropy of $Z$ is given by $\boxed{\frac{1}{2}\log(2\pi n\sigma^2)+\frac{1}{2}}$.
+\subsection*{(c)}
+We have that 
+$$\text{Var}(Z)=E[(\sum_{i=1}^{n}Z_i)^2]-(E[\sum_{i=1}^{n}Z_i])^2$$
+We can rewrite this as 
+\begin{align*}
+    \text{Var}(Z)&=E[\sum_{i=1}^{n}Z_i^2]-E[\sum_{i=1}^{n}Z_i]^2+\sum_{i\neq j}E[Z_iZ_j]-E[Z_i]E[Z_j]\\
+    &=\sum_{i=1}^{n}Var(Z_i)+\sum_{i\neq j}Cov(Z_i,Z_j)
+\end{align*}
+We have that $Cov(Z_i,Z_j)\leq \sqrt{Var(Z_i)Var(Z_j)}$, and since 
+$Var(Z_i)\leq \sigma^2$ we get that
+$$Var(z)\leq n^2\sigma^2$$
+With equality only happening when $E[Z_i]=0$, therefore we get that 
+the joint distribution of $Z_i$'s as expressed by a vector  
+$\mathbf{Z}=(Z_1,Z_2,\ldots,Z_n)$ is distrubuted as a multivariate Gaussian with mean $\mu=[0,\ldots,0]$ and covariance matrix
+$\Sigma$ where $\Sigma_{ij}=\sigma^2$ for all $1\leq i,j\leq n$. And with this the 
+maximum differential entropy of $Z$ is given by $\boxed{\frac{1}{2}\log(2\pi n^2\sigma^2)+\frac{1}{2}}$.
+
+
+\end{document}
