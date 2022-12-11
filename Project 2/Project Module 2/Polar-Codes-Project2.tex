@@ -1,0 +1,199 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{UCLAhandout_fall22}
+\usepackage{color,amssymb,stmaryrd,amsmath,amsfonts,rotating,mathrsfs,psfrag,float,graphicx}
+\usepackage{amsmath,psfrag}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{dsfont}
+\usepackage{subfig}
+\usepackage[usenames,dvipsnames]{pstricks}
+\usepackage{epsfig}
+\usepackage{pst-grad} % For gradients
+\usepackage{pst-plot} % For axes
+\usepackage[]{algorithm2e}
+\usepackage{tikz}
+\usepackage{hyperref}
+\usepackage{multirow}
+\usepackage[]{algorithm2e}
+\usepackage{mathtools}
+\usepackage{dirtree}
+\newtheorem{Example}{Example}
+\newcommand{\TODO}[1]{{\color{red}#1}}
+\begin{document}
+
+\handout{Handout \# 20, Monday, 21st November 2022}{\Large Project Module \# 2 \\\small Due 4th December 2022, before 11:59pm.\\
+  Submit your solution to Gradescope with Entry Code: \textbf{57DN5B}}
+
+\section*{Instructions}
+Please, read the following instructions carefully before working in the project:
+\begin{itemize}
+\item The project must be done in groups. Please keep the same group as you had in Project Module $1$. 
+\item You are allowed to use either Python or MATLAB for the project. The code files we have provided are in MATLAB, but you may translate the code into Python if you want to.
+\item The uploaded module has a directory \texttt{code} with the following structure:
+\dirtree{%
+	.1 code.
+	.2 code\_snippet\_prob\_3.m.
+	.2 code\_snippet\_prob\_4.m.
+	.2 bpsk\_awgn\_channel.m.	
+	.2 polar\_encode.m.
+	.2 polar\_decode.m.
+}
+%You will only need to make changes to the main \texttt{Notebook\_Module3.ipynb} notebook. You do not have to write commands to load any data as that has already been done in the provided \texttt{Notebook\_Module3.ipynb} file.
+\item \textbf{Important:} Any portions of the code that you must modify start with \texttt{Enter Your Code Here}. Please do not change any code outside of these blocks.
+\item Submit your solution of any theory part (if applicable) as well as the code in a single report in a PDF
+format to Gradescope. 
+%You may use the option to convert the Juypter Notebook to a PDF for your code. If needed, you can add Markdown blocks to the Jupyter Notebook to answer any questions.
+Each group member must upload the prepared final PDF file individually to Gradescope. 
+\item Include a small section towards the end of your report on the contributions of each group member in the project.
+\item Your codes will be tested using a different input-text. Therefore, make sure you implement
+the missing parts of the codes properly independent of the given input-texts.
+\item We \textbf{DO NOT} measure the efficiency of your code. We want a working code that can work on a general text.
+\item We have provided code snippets in MATLAB for this project. You can modify/edit them to get your desired results.
+\end{itemize}
+%--------------------------------------------------------------------
+
+%--------------------------------------------------------------------
+%Part1-------------------------------------------------------------
+
+\section{Polar Codes: Polarization effect}
+
+In this Project, we will briefly introduce you to the Polar Codes, which are linear block error-correcting channel codes. This project statement will give you a high level idea of the Polar codes, but for more details, and encoding and decoding using Polar codes, we recommend you to refer to \cite{arikan,Pfister}.
+
+Polar codes were introduced by Erdal Arıkan in 2009 and they provide the first deterministic construction of capacity-achieving codes for binary memoryless symmetric (BMS) channels \cite{arikan}. Among all channels there are two classes of channels for which it is easy to communicate optimally - (i) The perfect channels: The output $Y$ determines the input $X$, and (ii) The useless channels: The output $Y$ is independent of the input $X$. In an ideal world, all channels would be one of those extremal types. Arıkan's polarization is a technique to convert any binary input channel to a mixture of binary input \textit{extremal} channel. This technique is information lossless, and of low complexity.
+
+In particular, consider a setup where $(U_1,U_2)$ are two equiprobable bits that are encoded into $(X_1,X_2) = (U_1 \xor U_2, U_2)$. Then $(X_1,X_2)$ are mapped to $(Y_1,Y_2)$ by two independent and identical channels $W$, with transition probabilities $\Pr[Y_1 = y \big\vert X_1 = x] = \Pr[Y_2 = y \big\vert X_2 = x] = W(y \big\vert x)$. The Tanner graph for this setup is shown in Fig. \ref{fig:setup}. Note that the mapping from $(U_1,U_2)$ to $(X_1,X_2)$ is invertible.
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.4]{setup}
+\caption{Setup of the problem from \cite{Pfister}}
+\label{fig:setup}
+\end{figure}
+
+{\color{blue}
+\exercise[polarization]
+Show the following:
+\begin{enumerate}
+\item
+\begin{equation}
+I(U_1,U_2;Y_1,Y_2) = I(X_1;Y_1) + I(X_2; Y_2) = I(U_1;Y_1,Y_2) + I(U_2;Y_1,Y_2,U_1)
+\label{eqn:polarization1}
+\end{equation}
+
+\item
+\begin{equation}
+I(U_1;Y_1,Y_2) \leq I(X_1;Y_1) = I(X_2; Y_2) \leq I(U_2;Y_1,Y_2,U_1)
+\label{eqn:polarization2}
+\end{equation}
+\end{enumerate}
+}
+
+It is clear from equations \ref{eqn:polarization1} and \ref{eqn:polarization2} that using polarization, we are converting the two channels $I(X_1;Y_1)$ and $I(X_2;Y_2)$ to a pair of polarized channels $I(U_1;Y_1,Y_2)$ and $I(U_2;Y_1,Y_2,U_1)$, such that there is no information loss.\\
+
+We can label the polarized channels as:
+\begin{itemize}
+\item The channel $W^-:U_1 \rightarrow Y_1Y_2$, where $U_1$ is controlled by the transmitter and $Y_1,Y_2$ are observed by the receiver.
+\item The channel $W^+:U_2 \rightarrow Y_1Y_2U_1$, where $U_2$ is controlled by the transmitter and $Y_1,Y_2$ are observed by the receiver. However, this channel requires $U_1$ which is not observed by the receiver. Therefore, we can synthesize $W^+$ by first processing the output of $W^-$ to estimate $U_1$, then use the estimated $U_1$, i.e., $\hat U_1$ to estimate $U_2$.
+\end{itemize}
+
+\subsection*{Example of Polarization:}
+Let us understand this using an example of the Binary Erasure Channel with erasure probability $p$, i.e., $W= \text{BEC($p$)}$. Therefore, we have
+\begin{align}
+Y = \begin{cases}
+X, &\text{with probability $1-p$}\\
+e, &\text{with probability $p$}
+\end{cases}
+\label{eqn:bec}
+\end{align}
+
+Now, the channel $W^-$ has the input $U_1$, and the outputs are
+\begin{align}
+(Y_1,Y_2) = \begin{cases}
+(U_1 \xor U_2, U_2), &\text{with probability $(1-p)^2$}\\
+(U_1 \xor U_2, e), &\text{with probability $(1-p)p$}\\
+(e, U_2), &\text{with probability $p(1-p)$}\\
+(e, e), &\text{with probability $p^2$}
+\end{cases}
+\end{align}
+Therefore, the channel $W^-$ is a BEC($p^-$), where $p^- = 2p - p^2$.
+
+Now, similarly, consider the channel $W^+$ has the input $U_2$, and the outputs are
+\begin{align}
+(Y_1,Y_2,U_1) = \begin{cases}
+(U_1 \xor U_2, U_2, U_1), &\text{with probability $(1-p)^2$}\\
+(U_1 \xor U_2, e, U_1), &\text{with probability $(1-p)p$}\\
+(e, U_2, U_1), &\text{with probability $p(1-p)$}\\
+(e, e, U_1), &\text{with probability $p^2$}
+\end{cases}
+\end{align}
+Therefore, the channel $W^+$ is a BEC($p^+$), where $p^+ = p^2$.
+
+%Note that $$P^+ = p^2 \leq p \leq 2p - p^2 = p^-$$
+%And for a BEC($p$), i.e. channel $W$, with input and output $X_i$ and $Y_i$, respectively, $i\in\{1,2\}$. We know that for equiprobable inputs, the capacity of the channel is $I(X_i;Y_i) = 1-p$.
+
+{\color{blue}
+\exercise[Polarization of BEC]
+Find the capacity ($C_W$) of the channel $W = \text{BEC($p$)}$ which takes binary input $X$ and has the output $Y$ as shown in equation \ref{eqn:bec}. Compare $C_W$, $C_{W^+}$, and $C_{W^-}$, where $C_{W^+}$ and $C_{W^-}$ are the capacities of the channels $W^+$ and $W^-$, respectively.\\
+\noindent You will see that the channel $W^+$ is better than channel $W$, while channel $W^-$ is worse than channel $W$.
+}
+\\
+
+Now, we can recursively polarize two channels, $W^+$ each, to obtain the channels $W^{++}$ which is a BEC($p^{++} = (p^{+})^2$) and $W^{+-}$ which is a BEC($p^{+-} = 2p^{+} - (p^{+})^2$).
+Likewise, we can polarize another two channels $W^-$ each, to obtain the channels $W^{-+}$ which is a BEC($p^{-+} = (p^{-})^2$), and $W^{--}$ which is a BEC($p^{--} = 2p^- - (p^-)^2$). Using this technique, we synthesize $4$-polarized binary-input channels, $W^{++},W^{+-},W^{-+},W^{--}$ out of given $4$-BEC.
+
+\textit{Channel polarization refers to the fact that out of $N$ independent copies of a given binary-input discrete memoryless channel (B-DMC), (in our example we have $N=2$ BEC channels and each BEC channel is represented by $W$), it is possible to synthesize a second set of $N$ binary-input channels, say $\{W^{s_1,s_2,\dots,s_n}\}$, where $n=\log_2(N)$ and $s_i = \{+,-\}$, such that as $N$ becomes large, the fraction of synthesized channels for which capacity is nearly $1$ approaches the capacity of channel $C_W$, and the fraction of synthesized channels for which the capacity is nearly $0$ approaches $1-C_W$. The polarized channels are well-conditioned for channel coding: one need only send data at rate $1$ through the synthesized channels with capacity near $1$ and at rate $0$ through other channels.\cite{arikan}}
+
+{\color{blue}
+\exercise[Coding Problem: Polarization of BEC]
+For different choice of erasure probability in BEC($p$) with $p=[0.3,0.6,0.8]$, plot the fraction of polarized channels with capacity greater than or equal to $1-\epsilon$ (i.e., with capacity near $1$) versus $N=2^n$, with $n=\{5,6,7,\dots,25\}$ and $\epsilon = \{0.1,0.01,0.001,0.0001\}$. You need to plot three figures corresponding to each choice of $p$, and in each figure, you must plot the fraction of polarized channels with capacity greater than or equal to $1-\epsilon$ vs $N$ for the given four different choice of $\epsilon$. Does it approaches the capacity of BEC($p$) as we increase $N$? 
+}
+
+\section{Polar Codes: Polar Encoding and decoding}
+
+We take the advantage of the polarization effect to construct codes that achieves the capacity of the channel by method called \textit{Polar coding} \cite{arikan}. The idea for Polar coding is to send the data through the polarized channels at rate 1 that has capacity near $1$, and at rate $0$ through other channels.
+
+\textbf{Encoding:} The polar transform of size $N$ is given by $\mathbf x=\mathbf u G_N$, where $\mathbf x = (x_1,\dots,x_N)$ is the encoded data of length $N$, $\mathbf u = (u_1,\dots, u_N )$ is the input data of length $N$, and $G_N$ is kernel of polar transform. Now, we put message data in some $K\leq N$ coordinates of the vector $\mathbf u$ based on the channel polarization effect, and the rest of the $N-K$ coordinates are set to either bit $0$ or $1$ (which is also known to the receiver). The input $\mathbf u$ is then encoded to $\mathbf x = \mathbf u G_N$.
+
+\textbf{Decoding:} At the receiver, consider the recursive successive cancellation decoder for a polar transform of length $N$ and let $\mathbf y = (y_1,\dots, y_N)$ be the observations of the encoded bits $\mathbf x = (x_1,\dots, x_N)$ through $N$ copies of the BMS channel $W$. To describe the decoder analysis, we focus on the effective channels seen by each of the inputs bits in $\mathbf u = (u_1,\dots, u_N )$. Let $W_N^{(i)}$ represent the virtual channel seen by $u_i$ during recursive successive-cancellation decoding of a length-$N$ polar transform. The SCD process uses the entire received vector $\mathbf y = (y_1,\dots,y_N)$, and all the past decisions $\hat u_1^{i-1}$ to generate the decision for $\hat u_i$. You can refer to \cite{arikan,Pfister} for more details on Encoding and Decoding using Polar codes.
+
+\textbf{Example:} For $N=2$, we have input data $\mathbf u = (u_1,u_2)$ and the transform kernel
+\begin{align}
+G_2 = \begin{pmatrix}
+1 & 0\\
+1 & 1
+\end{pmatrix}
+\end{align}
+we get the encoded data $\mathbf x = (x_1,x_2) = (u_1+u_2,u_2)$. Now, from the polarization effect we know that one of the polarized channel has better capacity than the other. Therefore, we put the message data in the corresponding coordinate of the input data $\mathbf u = (u_1,u_2)$, which is say $u_1$ and set $u_2 = 0$. The encoded data $\mathbf x = (u_1,0)$ is then transmitted through two copies of BMS channel.
+
+At the receiver, we observe $\mathbf y = (y_1, y_2)$. We decode $u_2$ from observed $\mathbf y = (y_1,y_2)$, in this case the receiver knows that $u_2 = 0$. Then we decode $u_1$ from the observed $\mathbf y = (y_1,y_2)$ and the estimated $\hat u_2 = u_2 = 0$.
+
+
+{\color{blue}
+\exercise[Using Polar codes for BPSK+AWGN channel]
+Consider the following setup, for a block length $N$, the message data $\mathbf u = (u_1,\dots,u_N)$, with information bits in some $K$ coordinates, is encoded to the the input data $\mathbf x = (x_1,\dots,x_N)$ using \textit{Polar encoding} which is transmitted through $N$-copies of Binary phase-shift keying (BPSK) and Additive white Gaussian noise channel. Therefore, the input data $\mathbf x = (x_1,\dots,x_N)$ is mapped to the signal $\mathbf s = (s_1,\dots,s_N)$, where $s_i = 1$ if $x_i = 1$ and $s_i=-1$ if $x_i=0$ for all $i\in\{1,2,\dots,N\}$. The output from the AWGN channel is denoted as
+$$\mathbf y = (y_1,\dots,y_N) = \mathbf s + \mathbf n$$
+where $n_i \sim \mathcal N(0,\sigma^2)$ are i.i.d. for all $i\in\{1,2,\dots,N\}$.
+
+Based on the received output from the channel $\mathbf y = (y_1,\dots,y_N)$, we perform successive-cancellation decoding to estimate $\hat{\mathbf u} = (\hat u_1,\dots,\hat u_N)$, and calculate the bit-error rate defined as $BER = \Pr[\hat u_i \neq u_i]$
+and the block error rate $FER = \Pr[\hat{\mathbf{u}} \neq \mathbf u]$.
+
+Plot the following figures:
+\begin{enumerate}
+\item Plot the figure that shows achievable rates at different SNR (in dB) for the BPSK+AWGN channel.
+\item For a given SNR (in dB), plot the bit-error rate vs the encoding rate (for five different encoding rates which are less than the achievable rate). Repeat for different values of SNR provided in the code snippet.
+\item For a given SNR (in dB), plot the block-error rate vs the encoding rate (for five different encoding rates which are less than the achievable rate). Repeat for different values of SNR provided in the code snippet.
+\end{enumerate}
+
+The MATLAB codes for the Polar Encoding and Decoding is provided along with this package\footnote{We acknowledge and thank Erdal Arıkan for sharing his MATLAB codes for the Polar Encoding and Decoding. The purpose of the codes is to study and understand the working of Polar codes in this course project and should not be used otherwise.}.
+}
+
+\section*{Acknowledgement}
+The MATLAB codes for Polar Encoding and Decoding are shared by Erdal Arıkan with us for the purpose of this course project. We thank him and also acknowledge the material shared by Henry Pfister which is freely available online.
+
+\bibliographystyle{plain}
+\bibliography{references.bib}
+
+\end{document}

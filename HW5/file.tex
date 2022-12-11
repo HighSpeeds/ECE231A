@@ -51,8 +51,8 @@ We have that
 $$I(X;Y)=\sum_{x\in \mathcal{X}}\tilde{P}_X(x)D(W_{Y|X}||P_Y)$$
 and 
 $$E[c(x)]=\sum_{x\in \mathcal{X}}\tilde{P}_X(x)c(x)$$
-Thus we have that
-$$C_{cost}=\max_{P_X(x)}\frac{I(X;Y)}{E[c(x)]}$$
+Thus we have that from part (c)
+$$C_{cost}=\max_{P_X(x)}\frac{I(X;Y)}{E[c(x)]}=\lambda$$
 \section*{Problem 2}
 \subsection*{(a)}
 We have that in order to maximize the 
@@ -153,8 +153,8 @@ and
 $$P_1=\frac{\sigma^2_1+\sigma^2_2+2P}{4}-\sigma_1^2$$
 $$P_2=\frac{\sigma^2_1+\sigma^2_2+2P}{4}-\sigma_2^2$$
 However we need to have that $P_1\geq 0$ and $P_2\geq 0$ and therefore we have that 
-$$P_1=\boxed{\left(\nu-\frac{\sigma_1^2}{2}^2\right)^{+}}$$
-$$P_2=\boxed{\left(\nu-\frac{\sigma_2^2}{2}^2\right)^{+}}$$
+$$P_1=\boxed{\left(\nu-\frac{\sigma_1^2}{2}\right)^{+}}$$
+$$P_2=\boxed{\left(\nu-\frac{\sigma_2^2}{2}\right)^{+}}$$
 where $\nu$ is chosen such that $(\nu-\frac{\sigma_1^2}{2})^{+}+(\nu-\frac{\sigma_2^2}{2})^{+}=P$, and 
 $(x)^{+}=\max\{0,x\}$. This satisfies the Kuhn-Tucker conditions. Therefore we get that
 the optimal channel capacity is:
@@ -167,24 +167,37 @@ $\sigma_2^2\geq 2\nu=\boxed{8}$
 \subsection*{(a)}
 We have that we want to minimize
 $$I(X;\hat{X}|Y)=H(X|Y)-H(X|Y,\hat{X})$$
-When $Y=X_i$ ie if it is not errased, the entropy of $H(X|Y)=H(X|Y,\hat{X})=0$,
+When $Y\neq E$, the entropy of $H(X|Y\neq E)=H(X|Y\neq E,\hat{X})=0$,
 thus we get
 $$I(X;\hat{X}|Y)=(p)(H(X|Y=E)-H(X|Y=E,\hat{X}))=(p)(H(X)-H(X|\hat{X}))
 $$
-From cover and thomas, we get that the minimum of $H(X)-H(X|\hat{X})=H(\frac{1}{2})-H(D)$
-Thus we have that the rate distortion function is 
-$$R_{X|Y}(D)=\boxed{p(H(\frac{1}{2})-H(X|\hat{X}))}$$
+From cover and thomas, we get that the minimum of $H(X)-H(X|\hat{X})=H(\frac{1}{2})-H(D_E)$.
+For some $D_E$, that is expected distortion given that $Y=E$, we get that
+if $D>\frac{1}{2}p$ then we can set $D_E=\frac{1}{2}$, and thus 
+we will have that $H(X)-H(X|\hat{X})=H(\frac{1}{2})-H(\frac{1}{2})=0$.
+If $D<\frac{1}{2}p$ then we want to "lump" all of the 
+distortion to the case when $Y=E$, therefore we will have
+$D_E=\frac{D}{p}$ and thus we will have that
+$$R_{X|Y}(D)=\boxed{\begin{cases}
+    p\left(1-H\left(\frac{D}{p}\right)\right) & D<\frac{1}{2}p\\
+    0 & D\geq \frac{1}{2}p
+\end{cases}}$$
 \subsection*{(b)}
 From the previous part we once again have 
 $$I(X;\hat{X}|Y)=p(H(X)-H(X|\hat{X}))$$
 Since the $d(0,1)=d(1,0)=\infty$ we have that 
-if $\hat{X}\neq E$ it must be equal to $X$ 
-and that the probability of $\hat{X}=E$ must be $D$ since
-$d(0,E)=d(1,E)=1$ and $E[d(x,\hat{X})]=D$
-Therefore we have 
-$$H(X|\hat{X})\leq DH(\frac{1}{2})$$
+if $\hat{X}\neq E$,  $\hat{X}$ must be equal to $X$, 
+Therefore $H(X|\hat{X}\neq E)=0$. Therefore we get that 
+$$H(X|\hat{X})\leq p_EH(X|\hat{X}=E)=DH(X)=p_EH(\frac{1}{2})=D$$
+Where $p_E$ is the probability that $\hat{X}=E$ given that 
+$Y=E$. We have that we want $p_E=1$, but this is only possible
+if $D>p$ otherwise we will have $p_E=\frac{D}{p}$.
 Thus we have that the rate distortion function is 
-$$R_{X|Y}(D)=\boxed{p(1-D)H(\frac{1}{2})}$$
+$$R_{X|Y}(D)=\boxed{\begin{cases}
+    p(1-\frac{D}{p}) & D<p\\
+    0 & D\geq p
+\end{cases}}$$
+
 \section*{Problem 5}
 \subsection*{(a)}
 We have that $H(X)=\frac{1}{2}\log((2\pi e)^2 2)$ and let 
