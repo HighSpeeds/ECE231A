@@ -94,4 +94,33 @@ Note that because the plotting functions provided would only
 plot for 1 value of p, I moved them inside the for loop. However because
 we were instructed to not touch the code beyond the parts we could touch,
 I left the original plotting functions in the code.
+\section{Problem 4 (Using Polar codes for BPSK+AWGN channel)}
+\subsection{(a)}
+Using the formula for the capacity of the BPSK+AWGN channel found in 
+the paper 
+"Analysis and Design of Power-Efficient Coding Schemes With Parallel Concatenated Convolutional Codes"
+by Simon Huettinger and J. Huber,
+we have that the capcity is given by  
+\begin{equation}
+    C=1-\int_{-\infty}^{\infty} \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-1)^2}{2\sigma^2}}\log_2(1+e^{-\frac{2x}{\sigma^2}})dx
+\end{equation}
+When we computed this integral we only did it from -20 to 20 since values
+beyond that result in NaN values and thus results in an incorrect integral. The resulting
+plot looks like\\
+\includegraphics[scale=0.3]{code/Achievable Rate vs SNR (dB) for BPSK+AWGN channel.png}
+\subsection{(b)}
+We get the following plot for BER vs encoding rate for diffrerent SNR values\\
+\includegraphics[scale=0.9]{code/BER vs rate for diffrent SNR (dB) for BPSK+AWGN channel.png}
+\subsection{(c)}
+We get the following plot for FER vs encoding rate for diffrerent SNR values\\
+\includegraphics[scale=0.9]{code/FER vs rate for diffrent SNR (dB) for BPSK+AWGN channel.png}
+\\\textit{note:} I modified the code outside of the comments saying to modify the code
+to have a plotting function, and have the rates be iterated over as a for loop
+nested inside a for loop for the SNR values. Also I reduced the number of trials
+to make the code run faster. \\\\The code to do everything for
+problem 4 is included below:
+\lstinputlisting[language=Octave]{code/code_snippet_prob_4.m}
+\section{How we divided up the work}
+David and Rohit did problem 1 and 2, Lawrence did problem 3, and Lawrence 
+and David did problem 4.
 \end{document}
